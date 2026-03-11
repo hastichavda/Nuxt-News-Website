@@ -648,7 +648,7 @@ const _inlineRuntimeConfig = {
     }
   },
   "public": {
-    "newsApiKey": "pub_4a7e1335bdc4474b8033c10425e63a5c"
+    "newsApiKey": "pub_597601ca0281253dd4c33f0a2a10b197b647c"
   }
 };
 const envOptions = {

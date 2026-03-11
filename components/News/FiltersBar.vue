@@ -218,7 +218,7 @@
           class="mt-1 w-full min-w-0 sm:absolute sm:right-0 sm:z-40 sm:w-auto"
         >
           <div
-            class="w-full max-w-full overflow-hidden rounded-xl border border-border bg-surface shadow-lg sm:w-auto sm:max-w-[calc(100vw-2rem)]"
+            class="max-w-full overflow-hidden sm:max-w-[calc(100vw-2rem)] sm:w-auto w-full"
           >
             <VDatePicker
               v-model="dateRange"
