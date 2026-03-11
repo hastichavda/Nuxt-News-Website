@@ -4,7 +4,7 @@
     <div class="w-full" ref="searchContainer">
       <label class="sr-only" for="q">Search</label>
       <div
-        class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4"
+        class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4"
       >
         <div class="flex min-w-0 w-full items-center gap-2 sm:w-auto sm:flex-1">
           <button
@@ -127,7 +127,7 @@
           </div>
 
           <!-- Date preset filter with inline clear icon -->
-          <div class="w-full sm:w-64">
+          <div ref="datePresetWrapper" class="w-full sm:w-64">
             <Listbox
               :model-value="props.preset"
               @update:model-value="(v: DatePreset) => handlePresetChange(v)"
@@ -210,32 +210,42 @@
     </div>
 
     <ClientOnly>
-      <div
-        v-if="inlineCalendarOpen && props.preset === 'custom'"
-        class="relative mt-1 w-full min-w-0"
+      <Transition
+        enter-active-class="transition duration-200 ease-out"
+        enter-from-class="opacity-0 scale-95 -translate-y-2"
+        enter-to-class="opacity-100 scale-100 translate-y-0"
+        leave-active-class="transition duration-150 ease-in"
+        leave-from-class="opacity-100 scale-100 translate-y-0"
+        leave-to-class="opacity-0 scale-95 -translate-y-2"
       >
         <div
-          class="mt-1 w-full min-w-0 sm:absolute sm:right-0 sm:z-40 sm:w-auto"
+          v-if="inlineCalendarOpen && props.preset === 'custom'"
+          ref="calendarContainer"
+          class="relative mt-1 w-full min-w-0 origin-top"
         >
           <div
-            class="max-w-full overflow-hidden sm:max-w-[calc(100vw-2rem)] sm:w-auto w-full"
+            class="mt-1 w-full min-w-0 sm:absolute sm:right-0 sm:z-40 sm:w-auto"
           >
-            <VDatePicker
-              v-model="dateRange"
-              is-range
-              :columns="1"
-              color="blue"
-              class="w-full max-w-full [&_.vc-container]:w-full [&_.vc-container]:max-w-full [&_.vc-container]:min-w-0"
-              @dayclick="
-                (_payload: unknown, event?: Event) => {
-                  ;(event?.target as HTMLElement | undefined)?.blur()
-                }
-              "
-              @update:model-value="handleDateRangeChange"
-            />
+            <div
+              class="w-full max-w-full overflow-hidden rounded-xl border border-border bg-surface shadow-lg sm:w-auto sm:max-w-[calc(100vw-2rem)]"
+            >
+              <VDatePicker
+                v-model="dateRange"
+                is-range
+                :columns="1"
+                color="blue"
+                class="w-full max-w-full [&_.vc-container]:w-full [&_.vc-container]:max-w-full [&_.vc-container]:min-w-0"
+                @dayclick="
+                  (_payload: unknown, event?: Event) => {
+                    ;(event?.target as HTMLElement | undefined)?.blur()
+                  }
+                "
+                @update:model-value="handleDateRangeChange"
+              />
+            </div>
           </div>
         </div>
-      </div>
+      </Transition>
     </ClientOnly>
   </div>
 </template>
@@ -294,6 +304,8 @@ const categories: Array<{ id: string; label: string }> = [
 const searchOpen = ref(false)
 const searchContainer = ref<HTMLElement | null>(null)
 const searchInputEl = ref<HTMLInputElement | null>(null)
+const calendarContainer = ref<HTMLElement | null>(null)
+const datePresetWrapper = ref<HTMLElement | null>(null)
 
 type CalendarRange = { start: Date | null; end: Date | null }
 
@@ -431,9 +443,23 @@ function clearDateFilters() {
 
 function handleDocumentClick(event: MouseEvent) {
   const target = event.target as Node | null
-  if (!target || !searchOpen.value) return
-  if (searchContainer.value && !searchContainer.value.contains(target)) {
+  if (!target) return
+
+  if (
+    searchOpen.value &&
+    searchContainer.value &&
+    !searchContainer.value.contains(target)
+  ) {
     closeSearch()
+  }
+
+  if (
+    inlineCalendarOpen.value &&
+    calendarContainer.value &&
+    !calendarContainer.value.contains(target) &&
+    (!datePresetWrapper.value || !datePresetWrapper.value.contains(target))
+  ) {
+    inlineCalendarOpen.value = false
   }
 }
 
