@@ -2,6 +2,9 @@
 
 NuxtNews is a Nuxt 3 news application backed by the NewsData.io API. The current product includes a minimal landing page, a filterable news archive, and a server-rendered article detail route.
 
+## Production Demo Link
+https://nuxt-news-website.netlify.app/news
+
 ## Current Scope
 
 - `/`:
@@ -62,18 +65,6 @@ tests/services/newsApi.test.ts
 3. `useNewsApi()` injects `NUXT_PUBLIC_NEWS_API_KEY` from runtime config.
 4. `services/newsApi.ts` performs typed list/detail requests.
 5. Pages render SSR-ready data and local loading/error states.
-
-## UI Notes
-
-- Shared content width uses `container-wide` in `assets/css/main.css` with `max-w-4xl`.
-- Hero sections are full-width; body content is container aligned.
-- Header is simplified to the current product navigation model.
-- News cards support:
-  published date icon,
-  consistent 16:9 image framing,
-  default placeholder image,
-  truncated description,
-  subtle title hover background.
 
 ## Environment Setup
 
@@ -157,10 +148,3 @@ Nuxt/Nitro will generate the deployable production output during the build.
 - Keep shared query/filter logic inside `stores/news.ts`.
 - Extend `types/index.ts` first when adding new article fields.
 - Reuse existing `components/News/*` building blocks for new listing/detail UI changes.
-
-## Current Quality Status
-
-- Unused legacy homepage/theme code removed.
-- Current routes and UI documented in this README.
-- No dedicated lint script is configured.
-- Production build and unit tests pass in the current codebase.
