@@ -1,0 +1,18 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">News favicon</title>
+  <desc id="desc">Simple newspaper icon for news site</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="12" fill="url(#bg)"/>
+  <rect x="14" y="16" width="36" height="32" rx="4" fill="#f9fafb" />
+  <rect x="18" y="20" width="18" height="6" rx="2" fill="#0f172a" />
+  <rect x="18" y="30" width="24" height="3" rx="1.5" fill="#cbd5f5" />
+  <rect x="18" y="36" width="20" height="3" rx="1.5" fill="#e5e7eb" />
+  <rect x="18" y="42" width="16" height="3" rx="1.5" fill="#e5e7eb" />
+  <rect x="40" y="30" width="6" height="15" rx="2" fill="#60a5fa" />
+</svg>
+
