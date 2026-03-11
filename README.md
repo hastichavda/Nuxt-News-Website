@@ -66,18 +66,6 @@ tests/services/newsApi.test.ts
 4. `services/newsApi.ts` performs typed list/detail requests.
 5. Pages render SSR-ready data and local loading/error states.
 
-## UI Notes
-
-- Shared content width uses `container-wide` in `assets/css/main.css` with `max-w-4xl`.
-- Hero sections are full-width; body content is container aligned.
-- Header is simplified to the current product navigation model.
-- News cards support:
-  published date icon,
-  consistent 16:9 image framing,
-  default placeholder image,
-  truncated description,
-  subtle title hover background.
-
 ## Environment Setup
 
 Create `.env` from `.env.example` and set:
