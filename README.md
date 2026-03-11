@@ -2,6 +2,9 @@
 
 NuxtNews is a Nuxt 3 news application backed by the NewsData.io API. The current product includes a minimal landing page, a filterable news archive, and a server-rendered article detail route.
 
+## Production Demo Link
+https://nuxt-news-website.netlify.app/news
+
 ## Current Scope
 
 - `/`:
