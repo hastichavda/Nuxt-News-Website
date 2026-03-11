@@ -1,0 +1,35 @@
+{
+  "name": "news-website",
+  "private": true,
+  "type": "module",
+  "imports": {
+    "#app-manifest": "./internal/nuxt/app-manifest.mjs",
+    "#internal/nuxt/paths": "./internal/nuxt/paths.mjs"
+  },
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "NODE_NO_WARNINGS=1 nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@headlessui/vue": "^1.7.23",
+    "@heroicons/vue": "^2.2.0",
+    "nuxt": "^3.14.0",
+    "pinia": "^2.2.4",
+    "vue": "^3.4.0",
+    "vue-router": "^4.4.0",
+    "v-calendar": "^3.0.3",
+    "@popperjs/core": "^2.11.8"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.12.2",
+    "@pinia/nuxt": "^0.5.3",
+    "@types/node": "^25.4.0",
+    "typescript": "^5.6.3",
+    "vitest": "^4.0.18",
+    "vue-tsc": "^2.1.10"
+  }
+}
